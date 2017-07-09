@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Allison - Project
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Project</h1>
+</div>
+<div class="row">
+    {% for information in content %}
+        <div class="col-sm-10 col-md-4" style="width:300,height:300">
+            <div class="thumbnail" style="width:300;height:300;">
+                <a href={{url_for('package_detail',dir='Project',package=information['package_name'])}}>
+                    <img src={{url_for('static',filename='./project/{}/{}'.format(information['package_name'],information['cover_file_name']))}} alt={{information['cover_file_name']}}>
+                </a>
+                <div class="caption">
+                    <h3>{{ information['package_name'] }}</h3>
+                    <p>{{ information['author'] }}</p>
+                    <p>{{ information['tags'] }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
